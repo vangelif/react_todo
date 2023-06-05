@@ -1,15 +1,23 @@
 import { useState } from "react";
 
-const Input = () => {
+const Input = ({ addTodoItem }) => {
   const [task, setTask] = useState("");
-  const handleChange = (e) => {
-    setTask(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTodoItem(task);
+    setTask("");
   };
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>
-          Task: <input type="text" value={task} onChange={handleChange} />
+          Task:{" "}
+          <input
+            type="text"
+            value={task}
+            onChange={handleSubmit}
+            placeholder="Add a todo.."
+          />
         </label>
       </form>
       <h5>Task: {task}</h5>
@@ -17,17 +25,4 @@ const Input = () => {
   );
 };
 export default Input;
-
-// return (
-//   <>
-//     <form onSubmit={handleSubmit} className="form-container">
-//       <input
-//         // ...
-//         className="input-text"
-//       />
-//       <button className="input-submit">Submit</button>
-//     </form>
-//     <span className="submit-warning">{message}</span>
-//   </>
-// );
 
