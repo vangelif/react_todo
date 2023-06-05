@@ -1,5 +1,20 @@
+import { useState } from "react";
+
 const Input = () => {
-  return <div>input field here...</div>;
+  const [task, setTask] = useState("");
+  const handleChange = (e) => {
+    setTask(e.target.value);
+  };
+  return (
+    <>
+      <form>
+        <label>
+          Task: <input type="text" value={task} onChange={handleChange} />
+        </label>
+      </form>
+      <h5>Task: {task}</h5>
+    </>
+  );
 };
 export default Input;
 
