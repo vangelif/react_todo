@@ -1,29 +1,30 @@
 import Input from "./input";
 import List from "./list";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const Logic = () => {
   const [todos, setTodos] = useState([
     {
-      id: 1,
-      title: "Setup development environment",
+      id: uuidv4(),
+      task: "Setup development environment",
       completed: true,
     },
     {
-      id: 2,
-      title: "Develop website and add content",
+      id: uuidv4(),
+      task: "Develop website and add content",
       completed: false,
     },
     {
-      id: 3,
-      title: "Deploy to live server",
+      id: uuidv4(),
+      task: "Deploy to live server",
       completed: false,
     },
   ]);
-  const addTodoItem = (title) => {
+  const addTodoItem = (task) => {
     const newTodo = {
-      id: 4,
-      title: title,
+      id: uuidv4(),
+      title: task,
       completed: false,
     };
     setTodos([...todos, newTodo]);
