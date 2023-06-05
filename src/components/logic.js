@@ -21,10 +21,20 @@ const Logic = () => {
       completed: false,
     },
   ]);
+  const setUpdate = (updatedTitle, id) => {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          todo.title = updatedTitle;
+        }
+        return todo;
+      })
+    );
+  };
   const addTodoItem = (task) => {
     const newTodo = {
       id: uuidv4(),
-      title: task,
+      task: task,
       completed: false,
     };
     setTodos([...todos, newTodo]);
@@ -53,7 +63,12 @@ const Logic = () => {
   return (
     <div>
       <Input addTodoItem={addTodoItem} />
-      <List todosProps={todos} handleChange={handleChange} delTodo={delTodo} />
+      <List
+        todosProps={todos}
+        handleChange={handleChange}
+        delTodo={delTodo}
+        setUpdate={setUpdate}
+      />
     </div>
   );
 };

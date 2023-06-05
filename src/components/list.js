@@ -1,6 +1,6 @@
 import Item from "./items";
 
-const List = ({ todosProps, handleChange, delTodo }) => {
+const List = ({ todosProps, handleChange, delTodo, setUpdate }) => {
   console.log(todosProps);
 
   return (
@@ -11,6 +11,7 @@ const List = ({ todosProps, handleChange, delTodo }) => {
           itemProp={todo}
           handleChange={handleChange}
           delTodo={delTodo}
+          setUpdate={setUpdate}
         />
       ))}
     </ul>

@@ -2,6 +2,9 @@ import { useState } from "react";
 const Input = ({ addTodoItem }) => {
   const [task, setTask] = useState("");
   const [message, setMessage] = useState("");
+  const handleChange = (e) => {
+    setTask(e.target.value);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (task.trim()) {
@@ -20,7 +23,7 @@ const Input = ({ addTodoItem }) => {
             className="input-text"
             type="text"
             value={task}
-            onChange={handleSubmit}
+            onChange={handleChange}
             placeholder="Add a todo.."
           />
         </label>
