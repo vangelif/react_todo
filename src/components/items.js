@@ -1,19 +1,23 @@
-import styles from "../styles/Item.module.css";
-import { useState } from "react";
-const Item = ({ itemProp, handleChange, delTodo, setUpdate }) => {
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from '../styles/Item.module.css';
+
+const Item = ({
+  itemProp, handleChange, delTodo, setUpdate,
+}) => {
   const [editing, setEditing] = useState(false);
   const handleEditing = () => {
     setEditing(true);
   };
-  let viewMode = {};
-  let editMode = {};
+  const viewMode = {};
+  const editMode = {};
   if (editing) {
-    viewMode.display = "none";
+    viewMode.display = 'none';
   } else {
-    editMode.display = "none";
+    editMode.display = 'none';
   }
   const handleUpdatedDone = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       setEditing(false);
     }
   };
@@ -25,8 +29,13 @@ const Item = ({ itemProp, handleChange, delTodo, setUpdate }) => {
           type="checkbox"
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>Edit</button>
-        <button onClick={() => delTodo(itemProp.id)}>Delete</button>
+
+        <button type="button" onClick={handleEditing}>
+          Edit
+        </button>
+        <button type="submit" onClick={() => delTodo(itemProp.id)}>
+          Delete
+        </button>
         {itemProp.task}
       </div>
       <input
@@ -40,5 +49,14 @@ const Item = ({ itemProp, handleChange, delTodo, setUpdate }) => {
     </li>
   );
 };
+Item.propTypes = {
+  itemProp: PropTypes.shape({
+    completed: PropTypes.bool.isRequired,
+    id: PropTypes.number.isRequired,
+    task: PropTypes.string.isRequired,
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired,
+  setUpdate: PropTypes.func.isRequired,
+};
 export default Item;
-
