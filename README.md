@@ -27,7 +27,7 @@
 
 **[Description]**
 
-"React Todo List" is a consolidation of the knowledge about React, components, props, state, and hooks, by following a tutorial.
+"React Todo List" is a consolidation of our knowledge about React, components, props, state, and hooks, by following a tutorial.
 
 ## 🛠️ Built With <a name="built-with"></a>
 
