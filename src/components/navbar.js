@@ -1,28 +1,33 @@
-import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
+const links = [
+  { path: "/", text: "Home" },
+  { path: "about", text: "About" },
+  { path: "profile", text: "Profile" },
+  { path: "login", text: "Login" },
+];
 
 const Navbar = () => {
-  const [dropdown, setDropdown] = useState(false);
-  console.log(useState(false));
-
-  useEffect(() => {
-    document.title = `Current state value: ${dropdown}`;
-  }, [dropdown]);
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>
-          <button onClick={() => setDropdown(!dropdown)}>
-            Services <span>&#8595;</span>
-          </button>
-          {dropdown && (
-            <ul>
-              <li>Design</li>
-              <li>Development</li>
-            </ul>
-          )}
-        </li>
+        {links.map((link) => {
+          return (
+            <li key={link.text}>
+              <NavLink
+                to={link.path}
+                className={({ isActive }) =>
+                  isActive ? "active__class" : undefined
+                }
+                style={({ isActive }) => ({
+                  color: isActive ? "red" : undefined,
+                })}
+              >
+                {link.text}
+              </NavLink>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );
